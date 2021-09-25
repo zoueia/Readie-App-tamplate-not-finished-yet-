@@ -1,0 +1,89 @@
+@use './scss/tools' ;
+@use './scss/dashboard' ;
+@use './scss/scrollbar' ;
+@use './scss/library' ;
+@use './scss/index' as *;
+@use './scss/media';
+
+html{
+    font-size: 16px;
+}
+
+*{
+    // background-color: red;
+    color: $main-color;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    position: relative;
+    background-repeat: none;
+    background-size: cover;
+    button{
+        background-color: rgba(214, 0, 0, 0);
+    }    
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
