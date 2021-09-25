@@ -1,0 +1,155 @@
+@use './index' as *;
+
+@mixin filter-by-header {
+    align-self: flex-start;
+    padding: 1.0625rem 1.0625rem 0.625rem 1.0625rem;
+    font-size: 0.8125rem;
+    font-weight: lighter;
+    color: $home-dashboard-h5-font-color;
+}
+
+.dashboard-pointer{
+    @include pointer(18.75rem);
+    z-index: 10;
+    img{
+        width: 2.5rem;
+    }
+    .show-hide-dashboard{ 
+        width: 28.3125rem;
+        height: 26.875rem;
+        border: 3px solid $dashboard-border-color;
+        border-radius: 31.25rem;
+        background: $dashboard-button-color;
+        padding: 1.875rem;
+        font-size: $xx-large;
+        color: $dashboard-word-color;
+        position: fixed;
+        left: -28.75rem;
+        top: 9.375rem;
+        transition: left .5s;
+        @include flex-center-y(flex-end);
+        &:active{
+            border: 5px solid $dashboard-border-color;
+        }
+        
+    } 
+    &:hover{
+        border: none;
+        img{
+            width: 0;
+        }
+        .show-hide-dashboard{
+            left: -15.625rem;
+        }
+    }
+}
+
+.hidden-left-controller{
+    height: 43.75rem;
+    width: 1.25rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    &:hover ~ .dashboard-pointer{
+        border: none;
+        img{
+            width: 0;
+        }
+        .show-hide-dashboard{
+            left: -15.625rem;
+        }
+    }
+}
+
+.home-page >.dashboard-wrapper{
+    max-width: fit-content;
+    min-width: fit-content;
+    // min-width: 15.5625rem;
+    border-right: 1px solid $border-color;
+    position: absolute;
+    left: -18.75rem;
+    transition: left .9s ease-in-out;
+    .dashboard-header{
+        border-bottom: 1px solid $border-color;
+        @include flex-center-y(center);
+        @include flex-direction(row,nowrap);
+        .readie-logo{padding: 0 1.25rem 0 1.25rem;}
+        .dashboard-header-go-to{
+            border-left: 1px solid $border-color;
+            padding: 0 0.9375rem 0 0.9375rem;
+            .dashboard-header-wishes{padding: 0.625rem;}
+            .dashboard-header-pdfs{padding: 0.625rem;}
+        }
+    }
+    .filter-by-category{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .h5-dashboard-header{@include filter-by-header()}
+        .filtration-choices > .category-lable{
+            @include radio-checkbox-select-circle($hover-circle-checkbox-color, $check-circle-checkbox-color, 5px)
+        }
+    }
+    
+    .filter-by-rating{
+        .h5-dashboard-header{@include filter-by-header()}
+        .filtration-choices {
+            padding: 0px 0.625rem 0px 0.625rem;
+            display: grid;
+            grid-template-columns: repeat( 2, minmax(6.5625rem, 1fr) );
+            .category-lable{
+                @include radio-checkbox-select-circle($hover-circle-checkbox-color, $check-circle-checkbox-color, 1px)
+            }
+        } 
+    }
+    
+    .find-more-books{
+        @include flex-center-y(center);
+        @include flex-direction(column,nowrap);
+        .h5-dashboard-header{
+            @include filter-by-header()
+        }
+        .amazon-feed{
+            width: 100%;
+            max-height: 31.25rem;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            .amazon-feed-book{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .amazon-feed-book-hover{
+                    width: 100%;
+                    height: 100%;
+                    background-color: $amazon-feed-book-hover-color;
+                    display:none;
+                    position: absolute;
+                    left: 0px;
+                    z-index: 5;
+                }
+                .img-amazon-book{
+                    // max-width: 120px;
+                    max-width: 8.875rem;
+                }
+                .amazon-book-title{
+                    width: 6.25rem;
+                    padding: 0.5rem 0.5rem 1.125rem 0.5rem;
+                    font-size: $amazon-book-title-font;
+                    text-align: center;
+                }
+                &:hover .amazon-feed-book-hover{
+                    display: block;
+                }
+            }
+    
+        }
+    }
+display: none;
+
+}
+
+.home-page >.home-dashboard-slider{
+    min-width: 0px;
+    height: 6.25rem;
+    transition: min-width .8s ;
+}

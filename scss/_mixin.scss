@@ -1,0 +1,60 @@
+@use './variables/var' as *;
+
+@mixin flex-center-y($x-possition) {
+    display: flex;
+    align-items: center;
+    justify-content: $x-possition;
+}
+
+@mixin flex-direction($direction,$wrap) {
+    flex-direction: $direction;
+    flex-wrap: $wrap
+}
+
+@mixin pointer($top) {
+    width: 5.4375rem;
+    height: 5.25rem;
+    border: 2px solid #F0F7FE;
+    border-radius: 8.90625rem;
+    position: fixed;
+    top: $top;
+    z-index: 3;
+    @include flex-center-y(center);
+}
+
+@mixin radio-checkbox-select-circle($hover-color,$checked-color,$spaces){
+    padding: $spaces;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .circle-checkbox{
+        position: absolute; 
+        left: 0;
+        opacity: 0;
+        &:checked ~ .circle-check-mark .circle-checked{
+            background: $checked-color;
+
+        }
+    }
+    .circle-check-mark{
+        width: 1.0625rem;
+        height: 1.0625rem;
+        border: 1px solid #E5E5E5;
+        border-radius: 3.125rem;
+        position: absolute;
+        left: 0;
+        @include flex-center-y(center);
+        .circle-checked{
+            width: 0.6875rem;
+            height: 0.6875rem;
+            border-radius: 3.125rem;
+            display: block;
+        }
+    }
+    .circle-checkbox-content{
+        padding-left: 1.25rem;
+    }
+    &:hover .circle-check-mark .circle-checked{
+        background: $hover-color;
+    }
+}

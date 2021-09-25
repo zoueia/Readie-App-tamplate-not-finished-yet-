@@ -1,0 +1,74 @@
+@use './index' as *;
+
+@mixin tools {
+    width: 9.3125rem;
+    height: 4.375rem;
+    border: 1px solid $border-color;
+    padding: 0.375rem;
+}
+@mixin button-active-tools {
+    border: 2px solid $home-tools-color;
+}
+
+.tools-pointer{
+    right: 0.625rem;
+    @include pointer(10.625rem);
+    .img-hide-on-hovering{
+        width: 2.5rem;
+    }
+    .home-control-tool{
+        position: fixed;
+        right: -12.5rem;
+        transition: right .5s;
+        .search-icon{
+            border-radius: 1.21875rem 1.21875rem 0px 0px;
+            @include tools();
+            @include flex-center-y(flex-start);
+            &:hover{
+                background: $hover-home-tools-color;
+                i{color: $hover-home-tools-icon-color;}
+            }
+            &:active{
+                @include button-active-tools()
+            }
+        }
+        .add-icon{
+            border-radius: 0px 0px 1.21875rem 1.21875rem;
+            @include tools();
+            @include flex-center-y(flex-start);
+            &:hover{
+                background: $hover-home-tools-color-supplementary;
+                i{color: $hover-home-tools-icon-color;}
+            }
+            &:active{
+                @include button-active-tools()
+            }
+        }
+    } 
+    &:hover{
+        border: none;
+        .img-hide-on-hovering{
+            width: 0;
+        }
+        .home-control-tool{
+            right: -6.25rem;
+        }
+    }
+}
+
+.hidden-right-controller{
+    height: 43.75rem;
+    width: 1.875rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    &:hover ~ .tools-pointer{
+        border: none;
+        .img-hide-on-hovering{
+            width: 0;
+        }
+        .home-control-tool{
+            right: -6.25rem;
+        }
+    }
+}
